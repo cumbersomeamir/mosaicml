@@ -26,5 +26,30 @@ answer = tokenizer.batch_decode(outputs, skip_special_tokens = True)
       
 print(answer[0].rstrip())
       
-
+answer_text = "This is another form of a text"
+      
+tokenized_answer = tokenizer.encode(answer_text, return_tensors = "pt")
+      
+outputs = model(**tokenized_example.to("cuda:0"))
+print(outputs.logits.shape)
+      
+print(tokenized_example["input_ids"].shape)
+      
+last_token_output = outputs.logits[0,-1].view(1,-1)
+print(last_token_output.shape())
+      
+tokenized_answer.shape()
+      
+loss_fct = torch.nn.CrossEntropyLoss()
+optimizer = transformers.AdamW(model.parameters(), lr = 5e-5)
+      
+labels = tokenized_answer[0][0].view(1)
+loss = loss_fct(last_token_output, label.to("cuda:0"))
+      
+print(loss.item)
+      
+model.train()
+loss.backward
+optimizer.step()
+optimizer.zero_grad(set_to_none= True)      
 
