@@ -30,7 +30,7 @@ print(tokenized_dataset)
 
 
 # Load the pre-trained GPT-Neo 1.3B model
-model = transformers.AutoModelForCausalLM.from_pretrained("mosaicml/mpt-7b", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("mosaicml/mpt-7b", trust_remote_code=True)
 
 # Define the training arguments
 training_args = TrainingArguments(
