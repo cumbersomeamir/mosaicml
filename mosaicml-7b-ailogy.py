@@ -18,7 +18,7 @@ txt = "This is a text to text mosaic"
 tokenized_example = tokenizer(txt, return_tensors="pt")
 
 
-print(tokenized_example['input_ids']
+print(tokenized_example['input_ids'])
       
 model.generate(tokenized_example['input_ids'].to('cuda:0'), max_new_tokens =150, do_sample = False, top_k = 5, top_p = 0.95)
 
